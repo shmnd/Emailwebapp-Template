@@ -118,6 +118,8 @@
         </form>
 
         <a href="{% url 'home:export_subscribers' %}?tag={{ request.GET.tag }}" class="export-btn">Export Users</a>
+        <a href="{% url 'home:subscribe' %}">Home Page</a>
+
 
         <!-- Subscriber List Table -->
         <table>
@@ -142,7 +144,6 @@
         </table>
 
         <!-- Home Link -->
-        <a href="{% url 'home:subscribe' %}">Home Page</a>
     </div>
 
 </body>
