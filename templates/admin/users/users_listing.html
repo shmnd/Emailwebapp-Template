@@ -82,6 +82,21 @@
         a:hover {
             background-color: #5563c1;
         }
+
+        .export-btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        
+        .export-btn:hover {
+            background-color: #218838;
+        }
+        
     </style>
 </head>
 <body>
@@ -101,6 +116,8 @@
                 {% endfor %}
             </select>
         </form>
+
+        <a href="{% url 'home:export_subscribers' %}?tag={{ request.GET.tag }}" class="export-btn">Export Users</a>
 
         <!-- Subscriber List Table -->
         <table>
