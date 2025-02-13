@@ -185,13 +185,20 @@
         <form method="post" enctype="multipart/form-data" id="csvUploadForm" action="{% url 'home:csv_upload' %}">
             {% csrf_token %}
             <div class="form-field">
+                <label for="tag">Tag:</label>
+                <select name="tag" id="tag">
+                    <option value="">Select Tag</option>
+                    {% for tag in tags %}
+                        <option value="{{ tag.id }}">{{ tag.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-field">
                 <label for="csv_file">Upload CSV File:</label>
                 <input type="file" name="csv_file" id="csv_file" accept=".csv">
             </div>
             <button type="submit">Upload</button>
         </form>
-
     </div>
-
 </body>
 </html>
