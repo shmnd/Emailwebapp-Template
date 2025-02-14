@@ -234,9 +234,9 @@
     document.getElementById("id_image").addEventListener("change", function() {
         previewImage(this, "imagePreview");
     });
-</script>
+</script> 
 
-<script>
+{% comment %} <script>
     function previewImage(input, previewId) {
         var file = input.files[0];
         if (file) {
@@ -258,7 +258,7 @@
     document.getElementById("id_image").addEventListener("change", function() {
         previewImage(this, "imagePreview");
     });
-</script>
+</script> {% endcomment %}
 
 
 
