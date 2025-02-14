@@ -74,7 +74,7 @@
         <!-- Email Content -->
         <div class="content">
             <h2>Hello, {{ recipient_name }}!</h2>
-            <p>{{ email_body }}</p>
+            <p>{{ email_body|safe }}</p>
             
             {% if image_url %}
                 <img src="{{ image_url }}" alt="Email Image" class="email-image">
