@@ -30,6 +30,7 @@
             font-size: 16px;
             color: #333;
             line-height: 1.6;
+            text-align: center;
         }
         .cta-button {
             display: block;
@@ -54,22 +55,33 @@
             color: #007BFF;
             text-decoration: none;
         }
+        .email-image {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <!-- Logo -->
         <div class="header">
-            <img src="{{ logo_url }}" alt="Company Logo">
+            {% if logo_url %}
+                <img src="{{ logo_url }}" alt="Company Logo">
+            {% endif %}
         </div>
 
         <!-- Email Content -->
         <div class="content">
             <h2>Hello, {{ recipient_name }}!</h2>
-            <p>{{ body }}</p>
+            <p>{{ email_body }}</p>
             
+            {% if image_url %}
+                <img src="{{ image_url }}" alt="Email Image" class="email-image">
+            {% endif %}
+
             <!-- Call to Action Button -->
-            <a href="{{ button_url }}" class="cta-button">Click Here</a>
+            <a href="{{ button_url }}" class="cta-button">{{ button_text }}</a>
 
             <p>If you have any questions, feel free to <a href="mailto:{{ contact_email }}">contact us</a>.</p>
         </div>
