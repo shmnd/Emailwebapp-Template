@@ -33,17 +33,16 @@
             text-align: center;
         }
         .cta-button {
-            display: block;
-            width: 200px;
-            text-align: center;
-            background-color: {{ button_color }};
+            display: inline-block;
+            width: auto;
+            padding: 12px 24px;
+            background-color: {{ button_color|default:"#007BFF" }};
             color: #ffffff;
-            padding: 12px;
-            margin: 20px auto;
             border-radius: 5px;
             text-decoration: none;
             font-size: 16px;
             font-weight: bold;
+            margin-top: 20px;
         }
         .footer {
             text-align: center;
@@ -58,7 +57,7 @@
         .email-image {
             max-width: 100%;
             border-radius: 8px;
-            margin-top: 15px;
+            margin: 20px 0;
         }
     </style>
 </head>
@@ -73,25 +72,31 @@
 
         <!-- Email Content -->
         <div class="content">
-            <h2>Hello, {{ recipient_name }}!</h2>
+            <h2>Hello, {{ recipient_name|default:"Valued Customer" }}!</h2>
             <p>{{ email_body|safe }}</p>
             
             {% if image_url %}
-                <img src="{{ image_url }}" alt="Email Image" class="email-image">
+                <img src="{{ image_url }}" alt="Featured Image" class="email-image">
             {% endif %}
 
             <!-- Call to Action Button -->
-            <a href="{{ button_url }}" class="cta-button">{{ button_text }}</a>
+            {% if button_url %}
+                <a href="{{ button_url }}" class="cta-button">{{ button_text|default:"Learn More" }}</a>
+            {% endif %}
 
-            <p>If you have any questions, feel free to <a href="mailto:{{ contact_email }}">contact us</a>.</p>
+            <p>If you have any questions, feel free to <a href="mailto:{{ contact_email|default:"support@example.com" }}">contact us</a>.</p>
         </div>
 
         <!-- Footer -->
         <div class="footer">
             <p>&copy; 2025 Your Company. All rights reserved.</p>
             <p>
-                <a href="{{ unsubscribe_url }}">Unsubscribe</a> | 
-                <a href="{{ privacy_policy_url }}">Privacy Policy</a>
+                {% if unsubscribe_url %}
+                    <a href="{{ unsubscribe_url }}">Unsubscribe</a> |
+                {% endif %}
+                {% if privacy_policy_url %}
+                    <a href="{{ privacy_policy_url }}">Privacy Policy</a>
+                {% endif %}
             </p>
         </div>
     </div>
