@@ -95,9 +95,30 @@
         .edit-btn:hover, .send-btn:hover {
             opacity: 0.8;
         }
+
+        .messages {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 15px;
+        }
+
+        .messages li {
+            color: red;
+            font-size: 20px;
+        }
+
     </style>
 </head>
 <body>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
 
     <div class="container">
         <h2>Send Email</h2>

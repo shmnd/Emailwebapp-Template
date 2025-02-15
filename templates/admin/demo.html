@@ -140,18 +140,37 @@
         a:hover {
             text-decoration: underline;
         }
+        .messages {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 15px;
+        }
+
+        .messages li {
+            color: red;
+            font-size: 20px;
+        }
+
     </style>
 </head>
 <body>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
     <div class="container">
         <!-- Navigation Buttons -->
         <div class="nav-buttons">
             <a href="{% url 'home:tag_list' %}" class="buttons">Tags</a>
-            <a href="{% url 'home:template_list' %}" class="buttons">Template</a>
-            <a href="{% url 'home:subscriber_list' %}" class="buttons">User</a>
+            <a href="{% url 'home:template_list' %}" class="buttons">Templates</a>
+            <a href="{% url 'home:subscriber_list' %}" class="buttons">Users</a>
             <a href="{% url 'home:send_email' %}" class="buttons">Send Email</a>
-            <a href="{% url 'home:send_email' %}" class="buttons">Report</a>
+            <a href="{% url 'home:send_email' %}" class="buttons">Reports</a>
 
         </div>
 

@@ -85,9 +85,30 @@
             display: flex;
             gap: 10px;
         }
+        .messages {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 15px;
+        }
+
+        .messages li {
+            color: red;
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
+
+    .messages {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 15px;
+    }
+
+    .messages li {
+        color: red;
+        font-size: 20px;
+    }
 
     <div class="container">
         <a href="{% url 'home:tag_create' %}" class="buttons">Create New Tag</a>

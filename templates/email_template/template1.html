@@ -72,7 +72,6 @@
 
         <!-- Email Content -->
         <div class="content">
-            <h2>Hello, {{ recipient_name|default:"Valued Customer" }}!</h2>
             <p>{{ email_body|safe }}</p>
             
             {% if image_url %}

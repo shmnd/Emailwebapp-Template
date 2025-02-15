@@ -81,9 +81,28 @@
         .action-link:hover {
             text-decoration: underline;
         }
+        .messages {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 15px;
+        }
+
+        .messages li {
+            color: red;
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
 
     <div class="container">
         <h1>Are you sure you want to delete "{{ tags.name }}"?</h1>

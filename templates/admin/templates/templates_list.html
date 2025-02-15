@@ -96,9 +96,29 @@
             background-color: #5563c1;
         }
 
+        .messages {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 15px;
+        }
+
+        .messages li {
+            color: red;
+            font-size: 20px;
+        }
+
     </style>
 </head>
 <body>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
 
     <div class="container">
         <h2>Templates</h2>
@@ -113,6 +133,8 @@
                     <th>Subject</th>
                     <th>Body</th>
                     <th>Actions</th>
+                    <th>Count</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -126,6 +148,7 @@
                             <a href="{% url 'home:template_update' template.id %}">Edit</a> | 
                             <a href="{% url 'home:template_delete' template.id %}">Delete</a>
                         </td>
+                        <td>{{ template.count }}</td>
                     </tr>
                 {% endfor %}
             </tbody>

@@ -108,9 +108,29 @@
             object-fit: contain;
         }
 
+        .messages {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 15px;
+        }
+
+        .messages li {
+            color: red;
+            font-size: 20px;
+        }
+
     </style>
 </head>
 <body>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
 
     <div class="container">
         <h2>{% if form.instance.pk %}Edit{% else %}Create{% endif %} Template</h2>
