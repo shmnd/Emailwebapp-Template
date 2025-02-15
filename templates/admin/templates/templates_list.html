@@ -106,7 +106,6 @@
         <a href="{% url 'home:template_create' %}" class="action-link">Create New Template</a>
         <a href="{% url 'home:subscribe' %}" class="buttons">Back to Home</a>
 
-
         <table>
             <thead>
                 <tr>
@@ -123,6 +122,7 @@
                         <td>{{ template.email_subject }}</td>
                         <td>{{ template.email_body }}</td>
                         <td>
+                            <a href="{% url 'home:template_view' template.id %}">View</a> | 
                             <a href="{% url 'home:template_update' template.id %}">Edit</a> | 
                             <a href="{% url 'home:template_delete' template.id %}">Delete</a>
                         </td>
@@ -130,7 +130,6 @@
                 {% endfor %}
             </tbody>
         </table>
-
     </div>
 
 </body>

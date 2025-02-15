@@ -25,10 +25,11 @@
 
         .container {
             background: white;
-            padding: 20px;
+            padding: 25px;
             border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-            width: 350px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 600px; /* Prevents container from becoming too wide on large screens */
             text-align: center;
         }
 
@@ -37,16 +38,22 @@
             color: #333;
         }
 
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
         .buttons {
-            display: inline-block;
-            padding: 10px;
+            padding: 10px 15px;
             background-color: #667eea;
             color: white;
             text-decoration: none;
             border-radius: 5px;
-            margin-right: 10px;
-            margin-bottom: 20px;
-            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s ease;
         }
 
         .buttons:hover {
@@ -54,8 +61,7 @@
         }
 
         .logout-button {
-            display: inline-block;
-            padding: 10px;
+            padding: 8px 12px;
             background-color: red;
             color: white;
             text-decoration: none;
@@ -63,21 +69,37 @@
             position: absolute;
             top: 10px;
             right: 10px;
+            font-size: 14px;
         }
 
         .form-field {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centers the label and input */
             margin-bottom: 15px;
+            width: 100%; /* Ensures full width for centering */
         }
-
-        .form-field input[type="email"], .form-field input[type="file"] {
-            width: 200px;
+        
+        .form-field label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .form-field input, 
+        .form-field select {
+            width: 320px; /* Fixed width for uniformity */
             padding: 8px;
-            margin-top: 5px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            text-align: left;
         }
+        
+        
 
         button {
+            width: 100%;
             padding: 10px;
             background-color: #667eea;
             color: white;
@@ -85,7 +107,7 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
-            margin-top: 20px;
+            transition: background 0.3s ease;
         }
 
         button:hover {
@@ -98,18 +120,11 @@
             margin-top: 5px;
         }
 
-        .form-field label {
-            font-weight: bold;
-            margin-top: 10px;
-            text-align: left;
-        }
-
-        .form-field select {
-            width: 200px;
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        hr {
+            margin: 20px 0;
+            border: none;
+            height: 1px;
+            background: #ddd;
         }
 
         p {
@@ -130,12 +145,15 @@
 <body>
 
     <div class="container">
-        <a href="{% url 'home:tag_list' %}" class="buttons">Tags</a>
-        <a href="{% url 'home:template_list' %}" class="buttons">Template</a>
-        <a href="{% url 'home:subscriber_list' %}" class="buttons">User</a>
-        
-        <a href="{% url 'home:send_email' %}" class="buttons">Send Email</a>
+        <!-- Navigation Buttons -->
+        <div class="nav-buttons">
+            <a href="{% url 'home:tag_list' %}" class="buttons">Tags</a>
+            <a href="{% url 'home:template_list' %}" class="buttons">Template</a>
+            <a href="{% url 'home:subscriber_list' %}" class="buttons">User</a>
+            <a href="{% url 'home:send_email' %}" class="buttons">Send Email</a>
+            <a href="{% url 'home:send_email' %}" class="buttons">Report</a>
 
+        </div>
 
         {% if user.is_authenticated %}
             <a href="{% url 'authentication:logout' %}" class="logout-button">Logout</a>
@@ -168,11 +186,9 @@
                     </div>
                 {% endif %}
             </div>
-
             <button type="submit">Subscribe</button>
         </form>
 
-        <!-- Display general form errors -->
         {% if form.non_field_errors %}
             <div class="error-message">
                 {% for error in form.non_field_errors %}

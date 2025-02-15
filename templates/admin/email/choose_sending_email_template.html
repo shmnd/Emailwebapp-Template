@@ -142,18 +142,18 @@
     </div>
 
     <script>
-        function editTemplate() {
+        {% comment %} function editTemplate() {
             let selectedTemplate = document.getElementById("template").value;
             if (selectedTemplate) {
                 window.location.href = `/edit-template/${selectedTemplate}/`;
             } else {
                 alert("Please select a template to edit.");
             }
-        }
+        } {% endcomment %}
 
-        function editTags() {
+        {% comment %} function editTags() {
             alert("Feature to edit tags can be implemented here.");
-        }
+        } {% endcomment %}
 
         function toggleDropdown() {
             let dropdown = document.getElementById("dropdownContainer");
@@ -169,7 +169,7 @@
 
             let dropdownBtn = document.querySelector(".dropdown-btn");
             dropdownBtn.innerText = selectedTags.length > 0 ? selectedTags.join(", ") : "Select Tags";
-        }
+        } 
 
         document.addEventListener("click", function(event) {
             let dropdown = document.getElementById("dropdownContainer");
@@ -178,7 +178,7 @@
                 dropdown.style.display = "none";
             }
         });
-    </script>
+    </script> 
 
 </body>
 </html>
