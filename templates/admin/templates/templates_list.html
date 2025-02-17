@@ -27,8 +27,8 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            max-width: 900px;
+            width: 90%;
+            max-width: 1200px;
             margin-top: 20px;
             text-align: center;
         }
@@ -133,8 +133,7 @@
                     <th>Subject</th>
                     <th>Body</th>
                     <th>Actions</th>
-                    <th>Count</th>
-
+                    <th style="width: 14%;">Details</th>
                 </tr>
             </thead>
             <tbody>
@@ -148,11 +147,23 @@
                             <a href="{% url 'home:template_update' template.id %}">Edit</a> | 
                             <a href="{% url 'home:template_delete' template.id %}">Delete</a>
                         </td>
-                        <td>{{ template.count }}</td>
+                        <td>
+                            Email Sent: {{ template.count }}<br>
+                            Opened Emails: <br>  {% comment %} count of  who opend the email {% endcomment %}
+                            Opened Users: <br> {% comment %} list of users email who opend the email {% endcomment %}
+                            <ul>
+                                {% for email in template.opened_users %}
+                                    <li>{{ email }}</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+
+                        
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
+
     </div>
 
 </body>

@@ -153,6 +153,7 @@
                 {{ form.email_body }}
             </div>
 
+
             <div class="form-field">
                 {{ form.logo.label_tag }}
                 {{ form.logo }}
@@ -233,6 +234,8 @@
     });
 </script>
 
+
+
 <script>
     function previewImage(input, previewId) {
         var file = input.files[0];
@@ -255,6 +258,42 @@
         previewImage(this, "imagePreview");
     });
 </script> 
+
+<script src="{% static 'tinymce/tinymce.min.js' %}"></script>
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        height: 300,
+        menubar: false,
+        plugins: [
+            'advlist autolink lists link charmap print preview anchor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table paste code help wordcount'
+        ],
+        toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
+                 'bullist numlist outdent indent | removeformat | add_button | help',
+        setup: function(editor) {
+            editor.ui.registry.addButton('add_button', {
+                text: 'Add Button',
+                onAction: function() {
+                    let buttonText = prompt("Enter button text:");
+                    let buttonUrl = prompt("Enter button URL:");
+
+                    if (buttonText && buttonUrl) {
+                        let buttonHtml = `<div style="text-align:center; margin:10px 0;">
+                            <a href="${buttonUrl}" style="background-color: #667eea; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none;">
+                                ${buttonText}
+                            </a>
+                        </div>`;
+                        editor.insertContent(buttonHtml);
+                    }
+                }
+            });
+        }
+    });
+</script>
+
+
 
 {% comment %} <script>
     function previewImage(input, previewId) {

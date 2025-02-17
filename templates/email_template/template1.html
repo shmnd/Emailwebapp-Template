@@ -98,6 +98,9 @@
                 {% endif %}
             </p>
         </div>
+        {% comment %} <img src="https://127.0.0.1:8000/track-email/?email={{ recipient_email }}&subject={{ email_subject }}&template_id={{ template.id }}" width="1" height="1" style="display:none;"> {% endcomment %}
+        {% comment %} <img src="{% url 'home:track_email_open' %}?email={{ recipient_email }}&subject={{ email_subject }}&template_id={{ template.id }}" width="1" height="1" style="display:none;"> {% endcomment %}
+
     </div>
 </body>
 </html>
