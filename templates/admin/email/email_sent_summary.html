@@ -30,7 +30,7 @@
             border-radius: 10px;
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
             width: 90%;
-            max-width: 700px;
+            max-width: 900px;
             text-align: center;
             overflow-x: auto; /* Ensures table is scrollable on smaller screens */
         }
@@ -106,10 +106,8 @@
             <a href="{% url 'home:email_summary_download' %}?template={{ selected_template_id }}" class="buttons">
                 Download
             </a>
-            
-
-    
         </div>
+
         <br>
 
         <!-- Filter by Templates -->
@@ -124,10 +122,10 @@
                 {% endfor %}
             </select>
         </form>
-        
+
         <br>
-        <h2>Bulk Email Sent Summary</h2>
-        
+        <h2>Email Sent Summary</h2>
+
         {% if email_records %}
             <table>
                 <thead>
@@ -135,6 +133,8 @@
                         <th>#</th>
                         <th>Template Name</th>
                         <th>Email Address</th>
+                        <th>Status</th>
+                        <th>Failure Reason</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -143,6 +143,8 @@
                             <td>{{ forloop.counter }}</td>
                             <td>{{ record.template_names }}</td>
                             <td>{{ record.sended_emails }}</td>
+                            <td>{{ record.status }}</td>
+                            <td>{{ record.failure_reason|default:"-" }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -151,5 +153,8 @@
             <p>No emails have been sent yet.</p>
         {% endif %}
 
+    </div>
+
 </body>
+
 </html>
