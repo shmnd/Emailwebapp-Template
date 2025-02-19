@@ -63,17 +63,6 @@
 </head>
 <body>
 
-
-    
-    <!-- ✅ Tracking Pixel Added (Only for Real Emails, Not Previews) -->
-    {% comment %} {% if subscriber and subscriber.id %} {% endcomment %}
-    {% comment %} {% endif %} {% endcomment %}
-
-    {% comment %} <img src="{{ tracking_server }}/track-email/?email={{ subscriber.email|urlencode }}&subscriber_id={{ subscriber.id }}&template_id={{ template.id|default:0 }}&subject={{ subject|urlencode }}" width="1" height="1" style="display:none;"> {% endcomment %}
-
-
-    <img src="http://abb0-2401-4900-1f24-615c-b128-6077-332b-bc4d.ngrok-free.app//track-email/?email={{ subscriber.email|urlencode }}&subscriber_id={{ subscriber.id }}&template_id={{ template.id|default:0 }}&subject={{ subject|urlencode }}" width="1" height="1" style="display:none;">
-
     <div class="container">
         <!-- Logo -->
         <div class="header">
